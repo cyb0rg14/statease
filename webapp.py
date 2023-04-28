@@ -130,7 +130,7 @@ def analyze_data(data):
                 grp_df = grp_data.get_group(get_grp) 
                 container.write(grp_df[colns].agg(agg_fns))
             else:
-                container.write(get_grp[colns].agg(agg_fns).head(ngrps))
+                container.write(grp_data[colns].agg(agg_fns).head(ngrps))
         else:
             if get_grp is not None:
                 grp_df = grp_data.get_group(get_grp) 
