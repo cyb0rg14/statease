@@ -49,7 +49,9 @@ def sel_colns(df):
     return colns
 
 def top_n_grps(grp_data):
-    ngrps= st.sidebar.number_input("Top N Groups", min_value=5, max_value=grp_data.ngroups)
+    total_grps = grp_data.ngroups
+    mn_value = 5 if total_grps >= 5 else total_grps
+    ngrps= st.sidebar.number_input("Top N Groups", min_value=mn_value, max_value=total_grps)
     return ngrps
 
 def get_grps(grp_data):
@@ -128,12 +130,14 @@ def analyze_data(data):
         if len(colns) > 0:
             if get_grp is not None:
                 grp_df = grp_data.get_group(get_grp) 
+                container.write(get_grp)
                 container.write(grp_df[colns].agg(agg_fns))
             else:
                 container.write(grp_data[colns].agg(agg_fns).head(ngrps))
         else:
             if get_grp is not None:
                 grp_df = grp_data.get_group(get_grp) 
+                container.write(get_grp)
                 container.write(grp_df.agg(agg_fns))
             else:
                 container.write(grp_data.agg(agg_fns).head(ngrps))
@@ -195,7 +199,7 @@ def display_chart(data, chart, x_axis, y_axis, xlbl, ylbl):
 
     elif chart == 'Pie':
         fig = px.pie(data, names=x_axis, values=y_axis, color=x_axis, title=f'{xlbl} by {ylbl}',
-                     color_discrete_sequence=px.colors.sequential.deep)
+                     color_discrete_sequence=px.colors.sequential.RdBu, hole=0.5)
         st.plotly_chart(fig)
 
 
