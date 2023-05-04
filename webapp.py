@@ -3,6 +3,13 @@ import pandas as pd
 from plotly import express as px
 from PIL import Image
 
+
+st.set_page_config(
+    page_title="Analyze It",
+    page_icon='https://images.emojiterra.com/twitter/v14.0/512px/1f575-2642.png',
+)
+
+
 container = st.container()
 col1,col2 = st.columns(2)
 
