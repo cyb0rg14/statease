@@ -159,7 +159,8 @@ def analyze_data(data):
         container.write(data.corr())
 
     except Exception as error:
-        container.write(error)
+        # container.write(error)
+        pass
     
     # code for this function completes here 
 
@@ -262,6 +263,15 @@ def main():
            analyze_data(data)
 
         if options =='Data visualization':
+            visualize_data(data)
+
+    if file is None:
+        data = pd.read_csv('2016.csv')
+
+        if options == 'Data Analysis':
+            analyze_data(data)
+        
+        if options == 'Data visualization':
             visualize_data(data)
 
 
