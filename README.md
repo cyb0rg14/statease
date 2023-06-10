@@ -1,1 +1,1 @@
-[# 🕵️ Analyze It](https://analyze-it.onrender.com)
+# 🕵️ Analyze It
